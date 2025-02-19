@@ -3,13 +3,13 @@ package services
 import (
 	"context"
 	"cryptoScamDetection/config"
-	"fmt"
 	"github.com/google/generative-ai-go/genai"
 	"google.golang.org/api/option"
 	"log"
+	"strings"
 )
 
-func GenResponse(bodyData string) {
+func GenResponse(bodyData string) string {
 	ctx := context.Background()
 	apiKey := config.GetEnv("API_KEY", "noApiKeyProvided")
 	client, err := genai.NewClient(ctx, option.WithAPIKey(apiKey))
@@ -22,16 +22,19 @@ func GenResponse(bodyData string) {
 		log.Fatal(err)
 	}
 
-	printResponse(resp)
+	return extractText(resp)
 }
 
-func printResponse(resp *genai.GenerateContentResponse) {
+func extractText(resp *genai.GenerateContentResponse) string {
+	var sb strings.Builder
 	for _, cand := range resp.Candidates {
 		if cand.Content != nil {
 			for _, part := range cand.Content.Parts {
-				fmt.Println(part)
+				if text, ok := part.(genai.Text); ok {
+					sb.WriteString(string(text))
+				}
 			}
 		}
 	}
-	fmt.Println("---")
+	return sb.String()
 }

@@ -13,10 +13,10 @@ func HandleAnalyze(c *gin.Context) {
 		c.AbortWithError(http.StatusBadRequest, bindErr)
 	}
 	//After this we are going to add our llm api call and logic.
-	services.GenResponse(bodyData.Data)
+	generatedResponse := services.GenResponse(bodyData.Data)
 
 	c.JSON(http.StatusAccepted, gin.H{
-		"message": "Data received!",
-		"Data":    bodyData,
+		"message":           "Data received!",
+		"GeneratedResponse": generatedResponse,
 	})
 }
