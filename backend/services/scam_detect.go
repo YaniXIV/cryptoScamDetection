@@ -2,7 +2,7 @@ package services
 
 import (
 	"context"
-	"cryptoScamDetection/config"
+	"cryptoScamDetection/backend/config"
 	"github.com/google/generative-ai-go/genai"
 	"google.golang.org/api/option"
 	"log"

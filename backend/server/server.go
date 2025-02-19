@@ -1,8 +1,8 @@
 package server
 
 import (
-	"cryptoScamDetection/config"
-	"cryptoScamDetection/handlers"
+	"cryptoScamDetection/backend/config"
+	"cryptoScamDetection/backend/handlers"
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

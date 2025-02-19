@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"cryptoScamDetection/models"
-	"cryptoScamDetection/services"
+	"cryptoScamDetection/backend/models"
+	"cryptoScamDetection/backend/services"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

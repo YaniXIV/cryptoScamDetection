@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cryptoScamDetection/config"
-	"cryptoScamDetection/server"
+	"cryptoScamDetection/backend/config"
+	"cryptoScamDetection/backend/server"
 )
 
 func main() {
